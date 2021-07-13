@@ -1,0 +1,34 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+{% load static %}
+
+<!--<a href="{% static '\portfolio\رساله نهایی.pdf' %}">resume</a>-->
+<div class="container text-center">
+
+<img src="{% static '\portfolio\IMG_7866.JPG' %}"  height=400, width=300>
+<br>
+<br>
+<br>
+{% for project in projects %}
+<h2>{{ project.title }}<h2>
+<P>{{ project.description }}<p>
+<img src="{{ project.image.url }}" height=40, width=40>
+{% if project.url %}
+<a href="{{ project.url }}">link</a>
+{% endif %}
+{% endfor %}
+<br>
+</div>
+<!--===================================================================================-->
+{% for fee in feeds %}
+<h2>{{ fee.title }}<h2>
+<P>{{ fee.description|safe }}<p>
+{% if fee.url %}
+<a href="{{ fee.url }}">link</a>
+{% endif %}
+{% endfor %}
+
+<!--===================================================================================-->
+<!--<a href="{% url 'blog:all_blogs' %}">allblogs</a>-->
+{% endblock %}

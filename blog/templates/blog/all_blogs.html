@@ -1,0 +1,22 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+
+<!--<h2> i have written {{News.count}} new{{News.count|pluralize}}</h2>-->
+<br>
+<br>
+{% for new in News %}
+<a href="{% url 'blog:detail' new.id %}"> <h2>{{ new.title }}<h2> </a>
+<!--<p>{{ new.description|safe|truncatechars:100}}</p>-->
+{% if new.image %}
+<img src="{{ new.image.url }}" height=40, width=40>
+{% endif %}
+{% if new.url %}
+<a href="{{ new.url }}">link</a>
+{% endif %}
+
+{% endfor %}
+{{ news }}
+<!--<a href="{% url 'home' %}"> home </a>-->
+
+{% endblock %}
